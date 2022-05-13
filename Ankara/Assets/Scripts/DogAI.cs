@@ -64,7 +64,7 @@ public class DogAI : MonoBehaviour
         {
             //Player Öldürme
         }
-    }
+    } //WIP
 
 
     void FollowPlayer()
