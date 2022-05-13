@@ -9,8 +9,11 @@ public class DogAI : MonoBehaviour
     public float speed;
 
     Transform player;
+    Vector2 _movingLine = new Vector2(0.66f, 0.33f).normalized;
 
     bool _canFollow;
+
+    LayerMask playerLayer;
 
     private void Start()
     {
@@ -19,13 +22,12 @@ public class DogAI : MonoBehaviour
 
     private void Update()
     {
-        if (CheckIfPlayerInRange())
+        if (SendRay())
         {
-            DOVirtual.DelayedCall(0.5f, () => { _canFollow = true; });
-        }
-        if (CheckIfPlayerIsLost())
-        {
-            _canFollow = false;
+            DOVirtual.DelayedCall(0.25f, () =>
+            {
+                _canFollow = true;
+            });
         }
 
 
@@ -40,22 +42,32 @@ public class DogAI : MonoBehaviour
     }
 
 
-    bool CheckIfPlayerInRange()
+    /* bool CheckIfPlayerInRange()
     {
         if (Vector2.Distance(player.position,transform.position) <= range)
         {
             return true;
         }
         return false;
-    }
-    bool CheckIfPlayerIsLost()
+    } */
+    /* bool CheckIfPlayerIsLost()
     {
         if (Vector2.Distance(player.position, transform.position) > maxRange)
         {
             return true;
         }
         return false;
+    } */
+    bool SendRay()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(0.3f, -0.6f),range,playerLayer);
+        if (hit)
+        {
+            return true;
+        }
+        return false;
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -68,6 +80,6 @@ public class DogAI : MonoBehaviour
 
     void FollowPlayer()
     {
-        //Follow 
+        transform.Translate(_movingLine*speed * Time.deltaTime);
     } //WIP
 }
