@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 _lastInputPos;
     public float InputMultiplier;
 
+    [SerializeField] private PlayerManager _playerManager;
+
 
     // Update is called once per frame
     void Update()
@@ -24,7 +27,7 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
-        transform.Translate(_movingLine * (Time.deltaTime * Speed));
+        transform.Translate(_movingLine * (Time.deltaTime * (_playerManager.CurrentStamina > 0 ? Speed : Speed/2f)));
     }
 
     // ReSharper disable Unity.PerformanceAnalysis
@@ -43,8 +46,22 @@ public class PlayerController : MonoBehaviour
             _lastInputPos = Input.mousePosition;
             if (distanceLine.x > 0 && distanceLine.y < 0 || distanceLine.x < 0 && distanceLine.y > 0)
             {
-                transform.Translate(distanceLine.normalized * Time.deltaTime * InputMultiplier);
+                transform.Translate(distanceLine.normalized * Time.deltaTime * (_playerManager.CurrentStamina > 0 ? InputMultiplier : InputMultiplier / 4f));
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("StaminaCollectible"))
+        {
+            _playerManager.CollectStamina(other.GetComponent<CollectibleStamina>().value);
+            Destroy(other.gameObject);
+        }
+        else if (other.CompareTag("MaxStaminaCollectible"))
+        {
+            _playerManager.MaximizeStamina();
+            Destroy(other.gameObject);
         }
     }
 }
