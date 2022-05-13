@@ -2010,6 +2010,18 @@ PrefabInstance:
       propertyPath: _rb
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4848576083711877527, guid: 25189b3058bd9f643a41d8bf4ae6f90f, type: 3}
+      propertyPath: Speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4848576083711877527, guid: 25189b3058bd9f643a41d8bf4ae6f90f, type: 3}
+      propertyPath: speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4848576083711877527, guid: 25189b3058bd9f643a41d8bf4ae6f90f, type: 3}
+      propertyPath: InputMultiplier
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4848576083711877531, guid: 25189b3058bd9f643a41d8bf4ae6f90f, type: 3}
       propertyPath: m_Name
       value: Player
