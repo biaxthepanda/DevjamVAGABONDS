@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
-        _rb.MovePosition(transform.position + _input * speed);
+        _rb.MovePosition(transform.position + _input * Time.deltaTime* speed);
     }
     
     private void GetInput()
