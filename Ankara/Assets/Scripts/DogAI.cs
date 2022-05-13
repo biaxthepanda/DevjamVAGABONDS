@@ -6,18 +6,22 @@ using DG.Tweening;
 public class DogAI : MonoBehaviour
 {
     public float range,maxRange;
-    public float speed;
+    public float speed,horizontalSpeed;
 
-    Transform player;
+    Transform playerTransform;
     Vector2 _movingLine = new Vector2(0.66f, 0.33f).normalized;
 
     bool _canFollow;
-
     LayerMask playerLayer;
+
+    Vector2 playerLastPos;
+
+   
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        
     }
 
     private void Update()
@@ -44,7 +48,7 @@ public class DogAI : MonoBehaviour
 
     /* bool CheckIfPlayerInRange()
     {
-        if (Vector2.Distance(player.position,transform.position) <= range)
+        if (Vector2.Distance(playerTransform.position,transform.position) <= range)
         {
             return true;
         }
@@ -52,7 +56,7 @@ public class DogAI : MonoBehaviour
     } */
     /* bool CheckIfPlayerIsLost()
     {
-        if (Vector2.Distance(player.position, transform.position) > maxRange)
+        if (Vector2.Distance(playerTransform.position, transform.position) > maxRange)
         {
             return true;
         }
@@ -64,6 +68,7 @@ public class DogAI : MonoBehaviour
         if (hit)
         {
             return true;
+            Vector2 playerLastPos = playerTransform.position;
         }
         return false;
     }
@@ -80,6 +85,19 @@ public class DogAI : MonoBehaviour
 
     void FollowPlayer()
     {
+
+        Vector2 horizontalLine = new Vector2(-_movingLine.y, _movingLine.x);
+        if(playerTransform.position.x < playerLastPos.x)
+        {
+            transform.Translate(horizontalLine*horizontalSpeed*Time.deltaTime);
+        }
+        else if (playerTransform.position.z > playerLastPos.x)
+        {
+            transform.Translate(-horizontalLine*horizontalSpeed*Time.deltaTime);
+        }
+        
+
         transform.Translate(_movingLine*speed * Time.deltaTime);
+        playerLastPos = playerTransform.position;
     } //WIP
 }
