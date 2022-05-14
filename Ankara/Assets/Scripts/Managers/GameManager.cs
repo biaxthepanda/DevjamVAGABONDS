@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<Level> _activeLevels;
 
     public Action<Level> LevelLoaded;
+    public Action<GameState> GameStateChanged;
+
+    public GameState GameState;
 
     private void Awake()
     {
@@ -26,6 +29,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Registry.LastLevelIndex--;
+        GameState = GameState.MainMenu;
         StartLevel();
     }
 
@@ -52,4 +56,48 @@ public class GameManager : MonoBehaviour
         _currentLevel = level;
         LevelLoaded.Invoke(_currentLevel);
     }
+
+    public void GameOver()
+    {
+        GameState = GameState.GameOver;
+        // GameStateChanged.Invoke(GameState);
+        //Game over ekranı gelsin
+        //Statlar falan çekilsin playerdan onlar yazsın kaç yemek topladın kaç lazımdı vsvs
+    }
+
+    public void ProgressGame()
+    {
+        if (GameState == GameState.MainMenu)
+        {
+            GameState = GameState.Playing;
+            GameStateChanged.Invoke(GameState);
+        }
+        else if (GameState == GameState.Playing)
+        {
+            NextLevel();
+        }
+        else if (GameState == GameState.GameOver)
+        {
+            Restart();
+            GameState = GameState.Playing;
+            // GameStateChanged.Invoke(GameState);
+        }
+    }
+
+    private void NextLevel()
+    {
+        if (_currentLevel)
+        {
+            Destroy(_currentLevel);
+            _currentLevel = null;
+            StartLevel();
+        }
+    }
+}
+
+public enum GameState
+{
+    MainMenu,
+    Playing,
+    GameOver
 }

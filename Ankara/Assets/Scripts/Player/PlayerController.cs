@@ -20,6 +20,15 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.Instance.GameState != GameState.Playing)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                GameManager.Instance.ProgressGame();
+            }
+
+            return;
+        }
         GetInput();
         Move();
     }
@@ -29,8 +38,7 @@ public class PlayerController : MonoBehaviour
     {
         transform.Translate(_movingLine * (Time.deltaTime * (_playerManager.CurrentStamina > 0 ? Speed : Speed/2f)));
     }
-
-    // ReSharper disable Unity.PerformanceAnalysis
+    
     private void GetInput()
     {
         if (Input.GetMouseButtonDown(0))
@@ -71,6 +79,7 @@ public class PlayerController : MonoBehaviour
         else if (other.CompareTag("DeathTile"))
         {
             //gameover logic through gamemanager
+            GameManager.Instance.GameOver();
         }
     }
 }
