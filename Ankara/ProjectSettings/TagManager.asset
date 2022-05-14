@@ -8,6 +8,7 @@ TagManager:
   - MaxStaminaCollectible
   - DeathTile
   - FoodCollectible
+  - Missile
   layers:
   - Default
   - TransparentFX
@@ -44,6 +45,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Obstacle
+    uniqueID: 2818831839
     locked: 0
   - name: Player
     uniqueID: 151561215
