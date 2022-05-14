@@ -926,7 +926,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.4427896, y: 1}
+    m_SensorSize: {x: 4.1144667, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1129,7 +1129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 428af7d831792de4d844ddb8d4af6adf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathParticle: {fileID: 149344, guid: 617378de28fbaa64c96485d5b0d9169b, type: 3}
+  deathParticle: {fileID: 147324, guid: c51e34914bd18ff4880b11005334182e, type: 3}
   heartParticle: {fileID: 120334, guid: cc0562e923d0cf9448bba7acdb82e626, type: 3}
   collectParticle: {fileID: 182714, guid: 0a9aa7cbab47dd34fad18af6ec82969d, type: 3}
   player: {fileID: 1501557064}
@@ -1505,7 +1505,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4848576083711877527, guid: 25189b3058bd9f643a41d8bf4ae6f90f, type: 3}
       propertyPath: InputMultiplier
-      value: 0.1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4848576083711877531, guid: 25189b3058bd9f643a41d8bf4ae6f90f, type: 3}
       propertyPath: m_Name
