@@ -20,6 +20,7 @@ public class VehicleSystem : MonoBehaviour
     {
        for(int i = 0; i < spawnPoses.Length; i++)
         {
+           
             Vector2 middleVector = (new Vector2(1, 1) - new Vector2(0, 0));
             if(spawnPoses[i].transform.position.y > middleVector.y && spawnPoses[i].transform.position.x < middleVector.x)
             {
