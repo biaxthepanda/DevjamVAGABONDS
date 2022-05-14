@@ -52,9 +52,14 @@ public class PlayerController : MonoBehaviour
             var distanceLine = (Vector2)Input.mousePosition - _lastInputPos;
             if (distanceLine.magnitude == 0) return;
             _lastInputPos = Input.mousePosition;
-            if (distanceLine.x > 0 && distanceLine.y < 0 || distanceLine.x < 0 && distanceLine.y > 0)
+            var goalVector = distanceLine.normalized * new Vector2(0.6f, 0.3f) * InputMultiplier;
+            Debug.Log(goalVector);
+            if (goalVector.normalized.x > 0 && goalVector.normalized.y < 0 || goalVector.normalized.x < 0 && goalVector.normalized.y > 0)
             {
-                transform.Translate(distanceLine.normalized * Time.deltaTime * (_playerManager.CurrentStamina > 0 ? InputMultiplier : InputMultiplier / 4f));
+                goalVector = (Vector2)transform.position + goalVector;
+                
+                // transform.Translate(translation);
+                transform.position = Vector2.Lerp((Vector2) transform.position, goalVector, Time.time);
             }
         }
     }

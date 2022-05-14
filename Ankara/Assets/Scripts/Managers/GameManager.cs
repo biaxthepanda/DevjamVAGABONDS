@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
         if (GameState == GameState.MainMenu)
         {
             GameState = GameState.Playing;
-            GameStateChanged.Invoke(GameState);
+            // GameStateChanged.Invoke(GameState);
         }
         else if (GameState == GameState.Playing)
         {

@@ -170,6 +170,7 @@ MonoBehaviour:
   _player: {fileID: 1501557066}
   _activeLevels:
   - {fileID: 4514410499207980737, guid: 9166b26f4e04e4d938ab838bf72038ba, type: 3}
+  GameState: 0
 --- !u!1 &149058478
 GameObject:
   m_ObjectHideFlags: 0
@@ -1164,6 +1165,10 @@ PrefabInstance:
     - target: {fileID: 4848576083711877526, guid: 25189b3058bd9f643a41d8bf4ae6f90f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4848576083711877527, guid: 25189b3058bd9f643a41d8bf4ae6f90f, type: 3}
+      propertyPath: InputMultiplier
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4848576083711877531, guid: 25189b3058bd9f643a41d8bf4ae6f90f, type: 3}
       propertyPath: m_Name
