@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 5
   InputMultiplier: 25
-  _playerManager: {fileID: 0}
+  _playerManager: {fileID: 1501557066}
 --- !u!114 &1501557066
 MonoBehaviour:
   m_ObjectHideFlags: 0

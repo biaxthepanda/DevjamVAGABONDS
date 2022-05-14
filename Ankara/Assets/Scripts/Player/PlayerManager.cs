@@ -40,4 +40,13 @@ public class PlayerManager : MonoBehaviour
     {
         _currentStamina += collectedFoodValue;
     }
+
+    public void Restart()
+    {
+        //set position
+        //set stamina
+        //set food
+        //set whatever needed here
+        Debug.Log("Restart for player done.");
+    }
 }

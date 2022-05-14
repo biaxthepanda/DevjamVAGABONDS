@@ -5,102 +5,68 @@ using DG.Tweening;
 
 public class DogAI : MonoBehaviour
 {
-    public float range,maxRange;
-    public float speed,horizontalSpeed;
+    public float range, maxRange;
+    public float speed, horizontalSpeed;
 
-    Transform playerTransform;
     Vector2 _movingLine = new Vector2(0.66f, 0.33f).normalized;
 
     bool _canFollow;
-    LayerMask playerLayer;
+    [SerializeField] private LayerMask playerLayer;
 
     Vector2 playerLastPos;
 
-   
+    [SerializeField] private Transform playerTransform;
+    private bool _notFollowing;
+
 
     private void Start()
     {
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        
+        _notFollowing = true;
     }
 
     private void Update()
     {
-        if (SendRay())
+        if (_notFollowing && SendRay())
         {
-            DOVirtual.DelayedCall(0.25f, () =>
-            {
-                _canFollow = true;
-            });
+            DOVirtual.DelayedCall(0.25f, () => { _canFollow = true; });
         }
 
-
-    }
-
-    private void FixedUpdate()
-    {
         if (_canFollow)
         {
             FollowPlayer();
         }
     }
 
-
-    /* bool CheckIfPlayerInRange()
-    {
-        if (Vector2.Distance(playerTransform.position,transform.position) <= range)
-        {
-            return true;
-        }
-        return false;
-    } */
-    /* bool CheckIfPlayerIsLost()
-    {
-        if (Vector2.Distance(playerTransform.position, transform.position) > maxRange)
-        {
-            return true;
-        }
-        return false;
-    } */
     bool SendRay()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(0.3f, -0.6f),range,playerLayer);
+        RaycastHit2D hit =
+            Physics2D.Raycast(transform.position, new Vector2(0.66f, -0.33f).normalized, range, playerLayer);
+        Debug.DrawRay(transform.position, new Vector2(0.66f, -0.33f).normalized * range, Color.red);
         if (hit)
         {
             playerLastPos = playerTransform.position;
+            _notFollowing = false;
             return true;
         }
+
         return false;
     }
 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
-            //Player Öldürme 
+            //gg
         }
     } //WIP
 
 
     void FollowPlayer()
     {
-        
-        Vector2 horizontalLine = new Vector2(-_movingLine.y, _movingLine.x);
-        if(playerTransform.position.x < playerLastPos.x)
-        {
-            transform.Translate(horizontalLine*horizontalSpeed*Time.deltaTime);
-        }
-        else if (playerTransform.position.z > playerLastPos.x)
-        {
-            transform.Translate(-horizontalLine*horizontalSpeed*Time.deltaTime);
-        } 
-
-        
-
-        
-
-        transform.Translate(_movingLine*speed * Time.deltaTime);
+        // transform.Translate(_movingLine * speed * Time.deltaTime);
         playerLastPos = playerTransform.position;
+
+        transform.position = Vector2.MoveTowards(transform.position, playerLastPos, speed * Time.deltaTime);
     } //WIP
 }

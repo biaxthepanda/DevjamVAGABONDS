@@ -6,6 +6,8 @@ TagManager:
   tags:
   - StaminaCollectible
   - MaxStaminaCollectible
+  - DeathTile
+  - FoodCollectible
   layers:
   - Default
   - TransparentFX

@@ -6,7 +6,7 @@ public class VehicleSystem : MonoBehaviour
 {
     public int vehicleAmount;
 
-    public  GameObject[] vehicles;
+    public  GameObject vehicleLeft,vehicleRight;
     public Transform[] spawnPoses;
     public bool[] isLeftToRight;
 
@@ -20,8 +20,21 @@ public class VehicleSystem : MonoBehaviour
     {
        for(int i = 0; i < spawnPoses.Length; i++)
         {
-            GameObject instantiated = Instantiate(vehicles[i],spawnPoses[i]);
-            instantiated.GetComponent<Vehicle>().leftToRight = isLeftToRight[i];
+           
+            Vector2 middleVector = (new Vector2(1, 1) - new Vector2(0, 0));
+            if(spawnPoses[i].transform.position.y > middleVector.y && spawnPoses[i].transform.position.x < middleVector.x)
+            {
+                GameObject instantiated = Instantiate(vehicleLeft, spawnPoses[i]);
+                instantiated.GetComponent<Vehicle>().leftToRight = true;
+            }
+            else if (spawnPoses[i].transform.position.y < middleVector.y && spawnPoses[i].transform.position.x > middleVector.x)
+            {
+                GameObject instantiated = Instantiate(vehicleRight, spawnPoses[i]);
+                instantiated.GetComponent<Vehicle>().leftToRight = false;
+            }
+
+            
+
         }
     }
 }
