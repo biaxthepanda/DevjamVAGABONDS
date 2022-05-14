@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
 
             return;
         }
+
         GetInput();
         Move();
     }
@@ -36,9 +37,9 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
-        transform.Translate(_movingLine * (Time.deltaTime * (_playerManager.CurrentStamina > 0 ? Speed : Speed/2f)));
+        transform.Translate(_movingLine * (Time.deltaTime * (_playerManager.CurrentStamina > 0 ? Speed : Speed / 2f)));
     }
-    
+
     private void GetInput()
     {
         if (Input.GetMouseButtonDown(0))
@@ -49,15 +50,16 @@ public class PlayerController : MonoBehaviour
 
         if (_shouldCheckInput && Input.GetMouseButton(0))
         {
-            var distanceLine = (Vector2)Input.mousePosition - _lastInputPos;
+            var distanceLine = (Vector2) Input.mousePosition - _lastInputPos;
             if (distanceLine.magnitude == 0) return;
             _lastInputPos = Input.mousePosition;
-            var goalVector = distanceLine.normalized * new Vector2(0.6f, 0.3f) * InputMultiplier;
-            Debug.Log(goalVector);
-            if (goalVector.normalized.x > 0 && goalVector.normalized.y < 0 || goalVector.normalized.x < 0 && goalVector.normalized.y > 0)
+            var goalVector = distanceLine.normalized * new Vector2(0.6f, 0.3f) *
+                             (_playerManager.CurrentStamina > 0 ? InputMultiplier : InputMultiplier / 2f);
+            if (goalVector.normalized.x > 0 && goalVector.normalized.y < 0 ||
+                goalVector.normalized.x < 0 && goalVector.normalized.y > 0)
             {
-                goalVector = (Vector2)transform.position + goalVector;
-                
+                goalVector = (Vector2) transform.position + goalVector;
+
                 // transform.Translate(translation);
                 transform.position = Vector2.Lerp((Vector2) transform.position, goalVector, Time.time);
             }
