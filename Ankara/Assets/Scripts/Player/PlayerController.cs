@@ -70,6 +70,8 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("StaminaCollectible"))
         {
+            ParticleManager.Instance.SpawnParticle(ParticleManager.Instance.collectParticle);
+
             _playerManager.CollectStamina(other.GetComponent<CollectibleStamina>().value);
             Destroy(other.gameObject);
         }
@@ -86,6 +88,8 @@ public class PlayerController : MonoBehaviour
         else if (other.CompareTag("DeathTile"))
         {
             //gameover logic through gamemanager
+            AudioManager.Instance.PlayAudio("meow");
+            ParticleManager.Instance.SpawnParticle(ParticleManager.Instance.deathParticle);
             GameManager.Instance.GameOver();
         }
     }

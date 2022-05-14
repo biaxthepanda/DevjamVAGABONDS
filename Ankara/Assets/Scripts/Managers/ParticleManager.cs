@@ -8,7 +8,7 @@ public class ParticleManager : MonoBehaviour
 
     public GameObject deathParticle, heartParticle, collectParticle;
 
-    Transform player;
+    public Transform player;
 
     private void Awake()
     {
