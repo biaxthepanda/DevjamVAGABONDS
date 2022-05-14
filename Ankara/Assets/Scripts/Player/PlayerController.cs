@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("StaminaCollectible"))
         {
             ParticleManager.Instance.SpawnParticle(ParticleManager.Instance.collectParticle);
-
+            AudioManager.Instance.PlayAudio("collectStamina");
             _playerManager.CollectStamina(other.GetComponent<CollectibleStamina>().value);
             Destroy(other.gameObject);
         }

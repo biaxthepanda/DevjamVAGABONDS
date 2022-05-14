@@ -317,7 +317,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -416,13 +416,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 149347473}
   SFX:
+  - {fileID: 8300000, guid: 1e582f5491309bc45a8b5556df101468, type: 3}
+  - {fileID: 8300000, guid: 6e0e50a37aea5fd428cbff07f677f82d, type: 3}
   - {fileID: 8300000, guid: 1dfacbd0f955e984e930645920dfccdc, type: 3}
   - {fileID: 8300000, guid: ed27f907e270a2e448ea5c28c40c2ea9, type: 3}
   - {fileID: 8300000, guid: ff32d45da724baf4aa5fbc7d0fbae909, type: 3}
   - {fileID: 8300000, guid: 1768f4955262c1a49b7d58af27be3c54, type: 3}
   - {fileID: 8300000, guid: 815700eb8f1d9af44b7f29f380b41c62, type: 3}
-  - {fileID: 8300000, guid: 1e582f5491309bc45a8b5556df101468, type: 3}
-  - {fileID: 8300000, guid: 6e0e50a37aea5fd428cbff07f677f82d, type: 3}
+  - {fileID: 8300000, guid: 21b1a9d344c219a4eb855de210277fb0, type: 3}
   musicPlayer: {fileID: 634636965}
   songs:
   - {fileID: 8300000, guid: 558b38705753be14d9003ef4efdeb63a, type: 3}
@@ -669,7 +670,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.27450982, g: 0.25882354, b: 0.36862746, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -925,7 +926,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7767653, y: 1}
+    m_SensorSize: {x: 1.4427896, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1131,6 +1132,7 @@ MonoBehaviour:
   deathParticle: {fileID: 149344, guid: 617378de28fbaa64c96485d5b0d9169b, type: 3}
   heartParticle: {fileID: 120334, guid: cc0562e923d0cf9448bba7acdb82e626, type: 3}
   collectParticle: {fileID: 182714, guid: 0a9aa7cbab47dd34fad18af6ec82969d, type: 3}
+  player: {fileID: 1501557064}
 --- !u!1 &1320004364
 GameObject:
   m_ObjectHideFlags: 3

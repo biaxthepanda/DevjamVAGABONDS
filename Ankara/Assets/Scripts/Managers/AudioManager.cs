@@ -44,6 +44,10 @@ public class AudioManager : MonoBehaviour
             case "dog2":
                 audioSource.PlayOneShot(SFX[6]);
                 break;
+            case "collectStamina":
+                audioSource.PlayOneShot(SFX[7]);
+                break;
+
         }
 
 
