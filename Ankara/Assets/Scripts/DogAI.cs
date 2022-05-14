@@ -18,17 +18,19 @@ public class DogAI : MonoBehaviour
     [SerializeField] private Transform playerTransform;
     private bool _notFollowing;
 
+    Animator animator;
 
     private void Start()
     {
         _notFollowing = true;
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
     {
         if (_notFollowing && SendRay())
         {
-            DOVirtual.DelayedCall(0.25f, () => { _canFollow = true; });
+            DOVirtual.DelayedCall(0.25f, () => { _canFollow = true; animator.SetTrigger("Run"); });
         }
 
         if (_canFollow)
