@@ -15,7 +15,7 @@ public class DogAI : MonoBehaviour
 
     Vector2 playerLastPos;
 
-    [SerializeField] private Transform playerTransform;
+    private Transform playerTransform;
     private bool _notFollowing;
 
     Animator animator;
@@ -24,6 +24,7 @@ public class DogAI : MonoBehaviour
     {
         _notFollowing = true;
         animator = GetComponent<Animator>();
+        playerTransform = GameManager.Instance.Player.transform;
     }
 
     private void Update()

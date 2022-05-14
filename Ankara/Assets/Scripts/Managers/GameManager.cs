@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     private Level _currentLevel;
 
     [SerializeField] private PlayerManager _player;
+    public PlayerManager Player => _player;
 
     [SerializeField] private List<Level> _activeLevels;
 
