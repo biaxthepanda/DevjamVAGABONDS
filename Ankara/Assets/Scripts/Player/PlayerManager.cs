@@ -10,12 +10,24 @@ public class PlayerManager : MonoBehaviour
     public float CurrentStamina => _currentStamina;
     public float _staminaDecreaseRate;
 
+    private int _requiredFood;
     private int _foodAmount;
     public int FoodAmount => _foodAmount;
+
+    private void OnEnable()
+    {
+        GameManager.Instance.LevelLoaded += OnLevelLoaded;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.Instance.LevelLoaded -= OnLevelLoaded;
+    }
 
     private void Start()
     {
         _currentStamina = MaxStamina;
+        _foodAmount = 0;
     }
 
     private void Update()
@@ -36,9 +48,9 @@ public class PlayerManager : MonoBehaviour
         _currentStamina = MaxStamina;
     }
 
-    public void CollectFood(float collectedFoodValue)
+    public void CollectFood(int collectedFoodValue)
     {
-        _currentStamina += collectedFoodValue;
+        _foodAmount += collectedFoodValue;
     }
 
     public void Restart()
@@ -47,6 +59,13 @@ public class PlayerManager : MonoBehaviour
         //set stamina
         //set food
         //set whatever needed here
+        transform.position = Vector3.zero;
+        _currentStamina = MaxStamina;
         Debug.Log("Restart for player done.");
+    }
+
+    private void OnLevelLoaded(Level level)
+    {
+        _requiredFood = level.RequiredFood;
     }
 }

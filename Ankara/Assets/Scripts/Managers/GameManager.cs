@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private List<Level> _activeLevels;
 
+    public Action<Level> LevelLoaded;
+
     private void Awake()
     {
         _Instance = this;
@@ -48,5 +50,6 @@ public class GameManager : MonoBehaviour
         if (!level) return;
         Registry.LastLevelIndex++;
         _currentLevel = level;
+        LevelLoaded.Invoke(_currentLevel);
     }
 }
