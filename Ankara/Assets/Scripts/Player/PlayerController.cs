@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private PlayerManager _playerManager;
 
+    [SerializeField] Animator _animator;
+    float playerRotation = 0;
+
 
     // Update is called once per frame
     void Update()
@@ -32,6 +35,8 @@ public class PlayerController : MonoBehaviour
 
         GetInput();
         Move();
+        SetAnimatorRotationFloat();
+        CheckIfStaminaZero();
     }
 
 
@@ -50,18 +55,30 @@ public class PlayerController : MonoBehaviour
 
         if (_shouldCheckInput && Input.GetMouseButton(0))
         {
+            
+            
             var distanceLine = (Vector2) Input.mousePosition - _lastInputPos;
-            if (distanceLine.magnitude == 0) return;
+            if (distanceLine.magnitude == 0) {
+                playerRotation = 0;
+                return;
+            } 
             _lastInputPos = Input.mousePosition;
             var goalVector = distanceLine.normalized * new Vector2(0.6f, 0.3f) *
                              (_playerManager.CurrentStamina > 0 ? InputMultiplier : InputMultiplier / 2f);
             if (goalVector.normalized.x > 0 && goalVector.normalized.y < 0 ||
                 goalVector.normalized.x < 0 && goalVector.normalized.y > 0)
             {
+
+                if (goalVector.normalized.x > 0 && goalVector.normalized.y < 0) playerRotation = -1;
+                else if (goalVector.normalized.x < 0 && goalVector.normalized.y > 0) playerRotation = 1;
+
                 goalVector = (Vector2) transform.position + goalVector;
 
                 // transform.Translate(translation);
                 transform.position = Vector2.Lerp((Vector2) transform.position, goalVector, Time.time);
+
+                
+                
             }
         }
     }
@@ -91,6 +108,24 @@ public class PlayerController : MonoBehaviour
             AudioManager.Instance.PlayAudio("meow");
             ParticleManager.Instance.SpawnParticle(ParticleManager.Instance.deathParticle);
             GameManager.Instance.GameOver();
+        }
+    }
+
+    private void SetAnimatorRotationFloat()
+    {
+        _animator.SetFloat("Rotation", playerRotation);
+        playerRotation = 0;
+    }
+
+    private void CheckIfStaminaZero()
+    {
+        if(_playerManager.CurrentStamina > 0)
+        {
+            _animator.SetBool("cantRun", false);
+        }
+        else
+        {
+            _animator.SetBool("cantRun", true);
         }
     }
 }
