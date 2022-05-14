@@ -62,6 +62,9 @@ public class PlayerController : MonoBehaviour
         {
             _playerManager.MaximizeStamina();
             Destroy(other.gameObject);
+        }else if (other.CompareTag("FoodCollectible"))
+        {
+            _playerManager.CollectFood(other.GetComponent<CollectibleFood>().value);
         }
     }
 }
