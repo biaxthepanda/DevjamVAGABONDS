@@ -33,8 +33,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        GetInput();
-        Move();
+        if(!GetInput()) Move();
         SetAnimatorRotationFloat();
         CheckIfStaminaZero();
     }
@@ -45,12 +44,13 @@ public class PlayerController : MonoBehaviour
         transform.Translate(_movingLine * (Time.deltaTime * (_playerManager.CurrentStamina > 0 ? Speed : Speed / 2f)));
     }
 
-    private void GetInput()
+    private bool GetInput()
     {
         if (Input.GetMouseButtonDown(0))
         {
             _lastInputPos = Input.mousePosition;
             _shouldCheckInput = true;
+            return false;
         }
 
         if (_shouldCheckInput && Input.GetMouseButton(0))
@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
             var distanceLine = (Vector2) Input.mousePosition - _lastInputPos;
             if (distanceLine.magnitude == 0) {
                 playerRotation = 0;
-                return;
+                return false;
             } 
             _lastInputPos = Input.mousePosition;
             var goalVector = distanceLine.normalized * new Vector2(0.6f, 0.3f) *
@@ -77,10 +77,14 @@ public class PlayerController : MonoBehaviour
                 // transform.Translate(translation);
                 transform.position = Vector2.Lerp((Vector2) transform.position, goalVector, Time.time);
 
-                
-                
+
+                return true;
             }
+
+            return false;
         }
+
+        return false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
