@@ -10,6 +10,9 @@ public class PlayerManager : MonoBehaviour
     public float CurrentStamina => _currentStamina;
     public float _staminaDecreaseRate;
 
+    private int _foodAmount;
+    public int FoodAmount => _foodAmount;
+
     private void Start()
     {
         _currentStamina = MaxStamina;
@@ -31,5 +34,10 @@ public class PlayerManager : MonoBehaviour
     public void MaximizeStamina()
     {
         _currentStamina = MaxStamina;
+    }
+
+    public void CollectFood(float collectedFoodValue)
+    {
+        _currentStamina += collectedFoodValue;
     }
 }
