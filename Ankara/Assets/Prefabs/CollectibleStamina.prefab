@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -3956109975968698483}
   m_Layer: 6
   m_Name: CollectibleStamina
-  m_TagString: Untagged
+  m_TagString: StaminaCollectible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
