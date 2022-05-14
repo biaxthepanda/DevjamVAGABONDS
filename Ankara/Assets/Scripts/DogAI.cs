@@ -67,8 +67,8 @@ public class DogAI : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(0.3f, -0.6f),range,playerLayer);
         if (hit)
         {
+            playerLastPos = playerTransform.position;
             return true;
-            Vector2 playerLastPos = playerTransform.position;
         }
         return false;
     }
@@ -85,7 +85,7 @@ public class DogAI : MonoBehaviour
 
     void FollowPlayer()
     {
-
+        
         Vector2 horizontalLine = new Vector2(-_movingLine.y, _movingLine.x);
         if(playerTransform.position.x < playerLastPos.x)
         {
@@ -94,7 +94,10 @@ public class DogAI : MonoBehaviour
         else if (playerTransform.position.z > playerLastPos.x)
         {
             transform.Translate(-horizontalLine*horizontalSpeed*Time.deltaTime);
-        }
+        } 
+
+        
+
         
 
         transform.Translate(_movingLine*speed * Time.deltaTime);
