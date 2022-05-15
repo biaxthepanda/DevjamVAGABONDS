@@ -51,6 +51,7 @@ public class PlayerManager : MonoBehaviour
     public void CollectFood(int collectedFoodValue)
     {
         _foodAmount += collectedFoodValue;
+        UIManager.Instance.SetFoodCount(_foodAmount, _requiredFood);
     }
 
     public void Restart()
@@ -61,6 +62,7 @@ public class PlayerManager : MonoBehaviour
         //set whatever needed here
         transform.position = Vector3.zero;
         _currentStamina = MaxStamina;
+        UIManager.Instance.SetFoodCount(0, _requiredFood);
         Debug.Log("Restart for player done.");
     }
 
