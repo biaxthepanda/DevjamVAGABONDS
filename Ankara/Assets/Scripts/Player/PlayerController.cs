@@ -118,6 +118,7 @@ public class PlayerController : MonoBehaviour
         else if (other.CompareTag("FoodCollectible"))
         {
             _playerManager.CollectFood(other.GetComponent<CollectibleFood>().value);
+            AudioManager.Instance.PlayAudio("collectFood");
             Destroy(other.gameObject);
         }
         else if (other.CompareTag("DeathTile"))

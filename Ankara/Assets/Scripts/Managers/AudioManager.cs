@@ -48,6 +48,9 @@ public class AudioManager : MonoBehaviour
             case "collectStamina":
                 audioSource.PlayOneShot(SFX[7]);
                 break;
+            case "collectFood":
+                audioSource.PlayOneShot(SFX[8]);
+                break;
 
         }
 

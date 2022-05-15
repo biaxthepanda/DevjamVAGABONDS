@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
     {
         if (_currentLevel)
         {
-            Destroy(_currentLevel);
+            Destroy(_currentLevel.gameObject);
             _currentLevel = null;
             StartLevel();
         }

@@ -348,7 +348,7 @@ MonoBehaviour:
   PlayingUI: {fileID: 1771572584}
   GameOverUI: {fileID: 1589879257}
   staminaBar: {fileID: 1386112966}
-  _foodText: {fileID: 0}
+  _foodText: {fileID: 1157915907}
 --- !u!1 &149347471
 GameObject:
   m_ObjectHideFlags: 0
@@ -501,6 +501,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1768f4955262c1a49b7d58af27be3c54, type: 3}
   - {fileID: 8300000, guid: 815700eb8f1d9af44b7f29f380b41c62, type: 3}
   - {fileID: 8300000, guid: f015cbd417ca9cc439732f9f8ebb183b, type: 3}
+  - {fileID: 8300000, guid: 40077e314af4aec469321588796d4d88, type: 3}
   musicPlayer: {fileID: 634636965}
   songs:
   - {fileID: 8300000, guid: 558b38705753be14d9003ef4efdeb63a, type: 3}
@@ -1079,7 +1080,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7766259, y: 1}
+    m_SensorSize: {x: 1.7775195, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
