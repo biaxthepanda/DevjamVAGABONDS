@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -13,6 +14,8 @@ public class UIManager : MonoBehaviour
     public GameObject MainMenuUI;
     public GameObject PlayingUI;
     public GameObject GameOverUI;
+
+    [SerializeField] private TMP_Text _foodText;
     
     private void Awake()
     {
@@ -42,5 +45,10 @@ public class UIManager : MonoBehaviour
             PlayingUI.SetActive(false);
             GameOverUI.SetActive(true);
         }
+    }
+
+    public void SetFoodCount(int totalCount, int maxCount)
+    {
+        _foodText.text = totalCount + "/" + maxCount;
     }
 }
