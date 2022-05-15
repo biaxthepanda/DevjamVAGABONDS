@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class UIManager : MonoBehaviour
     public GameObject MainMenuUI;
     public GameObject PlayingUI;
     public GameObject GameOverUI;
+
+    public Image staminaBar;
 
     [SerializeField] private TMP_Text _foodText;
     
@@ -50,5 +53,10 @@ public class UIManager : MonoBehaviour
     public void SetFoodCount(int totalCount, int maxCount)
     {
         _foodText.text = totalCount + "/" + maxCount;
+    }
+
+    public void UpdateStaminaBar(float fill)
+    {
+        staminaBar.fillAmount = fill;
     }
 }

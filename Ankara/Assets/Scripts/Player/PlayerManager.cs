@@ -35,12 +35,14 @@ public class PlayerManager : MonoBehaviour
         if (_currentStamina > 0)
         {
             _currentStamina -= _staminaDecreaseRate * Time.deltaTime;
+            UIManager.Instance.UpdateStaminaBar(_currentStamina/MaxStamina);
         }
     }
 
     public void CollectStamina(float collectedStaminaValue)
     {
         _currentStamina = Mathf.Clamp(_currentStamina+collectedStaminaValue, 0, MaxStamina);
+        UIManager.Instance.UpdateStaminaBar(_currentStamina / MaxStamina);
     }
 
     public void MaximizeStamina()
