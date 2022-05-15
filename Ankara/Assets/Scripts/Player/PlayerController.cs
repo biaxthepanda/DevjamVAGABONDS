@@ -71,9 +71,17 @@ public class PlayerController : MonoBehaviour
 
                 if (goalVector.normalized.x > 0 && goalVector.normalized.y < 0) playerRotation = -1;
                 else if (goalVector.normalized.x < 0 && goalVector.normalized.y > 0) playerRotation = 1;
+                Vector2 direction = _movingLine;
 
+                Ray ray = new Ray(Vector2.zero, direction);
+                float distance = Vector3.Cross(ray.direction, transform.position - ray.origin).magnitude;
+                if (distance>1.5f)
+                {
+                    var nextDistance = Vector3.Cross(ray.direction, (Vector2)transform.position + goalVector - (Vector2)ray.origin).magnitude;
+                    if(nextDistance > distance) return false;
+                }
                 goalVector = (Vector2) transform.position + goalVector;
-
+                
                 // transform.Translate(translation);
                 transform.position = Vector2.Lerp((Vector2) transform.position, goalVector, Time.time);
 
