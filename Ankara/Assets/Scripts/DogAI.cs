@@ -15,20 +15,23 @@ public class DogAI : MonoBehaviour
 
     Vector2 playerLastPos;
 
-    [SerializeField] private Transform playerTransform;
+    private Transform playerTransform;
     private bool _notFollowing;
 
+    Animator animator;
 
     private void Start()
     {
         _notFollowing = true;
+        animator = GetComponent<Animator>();
+        playerTransform = GameManager.Instance.Player.transform;
     }
 
     private void Update()
     {
         if (_notFollowing && SendRay())
         {
-            DOVirtual.DelayedCall(0.25f, () => { _canFollow = true; });
+            DOVirtual.DelayedCall(0.25f, () => { _canFollow = true; animator.SetTrigger("Run"); });
         }
 
         if (_canFollow)

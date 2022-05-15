@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private PlayerManager _playerManager;
 
+    [SerializeField] Animator _animator;
+    float playerRotation = 0;
+
 
     // Update is called once per frame
     void Update()
@@ -30,8 +33,9 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        GetInput();
-        Move();
+        if(!GetInput()) Move();
+        SetAnimatorRotationFloat();
+        CheckIfStaminaZero();
     }
 
 
@@ -40,30 +44,55 @@ public class PlayerController : MonoBehaviour
         transform.Translate(_movingLine * (Time.deltaTime * (_playerManager.CurrentStamina > 0 ? Speed : Speed / 2f)));
     }
 
-    private void GetInput()
+    private bool GetInput()
     {
         if (Input.GetMouseButtonDown(0))
         {
             _lastInputPos = Input.mousePosition;
             _shouldCheckInput = true;
+            return false;
         }
 
         if (_shouldCheckInput && Input.GetMouseButton(0))
         {
+            
+            
             var distanceLine = (Vector2) Input.mousePosition - _lastInputPos;
-            if (distanceLine.magnitude == 0) return;
+            if (distanceLine.magnitude == 0) {
+                playerRotation = 0;
+                return false;
+            } 
             _lastInputPos = Input.mousePosition;
             var goalVector = distanceLine.normalized * new Vector2(0.6f, 0.3f) *
                              (_playerManager.CurrentStamina > 0 ? InputMultiplier : InputMultiplier / 2f);
             if (goalVector.normalized.x > 0 && goalVector.normalized.y < 0 ||
                 goalVector.normalized.x < 0 && goalVector.normalized.y > 0)
             {
-                goalVector = (Vector2) transform.position + goalVector;
 
+                if (goalVector.normalized.x > 0 && goalVector.normalized.y < 0) playerRotation = -1;
+                else if (goalVector.normalized.x < 0 && goalVector.normalized.y > 0) playerRotation = 1;
+                Vector2 direction = _movingLine;
+
+                Ray ray = new Ray(Vector2.zero, direction);
+                float distance = Vector3.Cross(ray.direction, transform.position - ray.origin).magnitude;
+                if (distance>1.5f)
+                {
+                    var nextDistance = Vector3.Cross(ray.direction, (Vector2)transform.position + goalVector - (Vector2)ray.origin).magnitude;
+                    if(nextDistance > distance) return false;
+                }
+                goalVector = (Vector2) transform.position + goalVector;
+                
                 // transform.Translate(translation);
                 transform.position = Vector2.Lerp((Vector2) transform.position, goalVector, Time.time);
+
+
+                return true;
             }
+
+            return false;
         }
+
+        return false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -91,6 +120,24 @@ public class PlayerController : MonoBehaviour
             AudioManager.Instance.PlayAudio("meow");
             ParticleManager.Instance.SpawnParticle(ParticleManager.Instance.deathParticle);
             GameManager.Instance.GameOver();
+        }
+    }
+
+    private void SetAnimatorRotationFloat()
+    {
+        _animator.SetFloat("Rotation", playerRotation);
+        playerRotation = 0;
+    }
+
+    private void CheckIfStaminaZero()
+    {
+        if(_playerManager.CurrentStamina > 0)
+        {
+            _animator.SetBool("cantRun", false);
+        }
+        else
+        {
+            _animator.SetBool("cantRun", true);
         }
     }
 }
