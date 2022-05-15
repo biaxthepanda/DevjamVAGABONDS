@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -19,13 +20,26 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Animator _animator;
     float playerRotation = 0;
 
+    private bool _speedIsZero;
+
+    private bool slowlyGoDone;
+
 
     // Update is called once per frame
     void Update()
     {
         if (GameManager.Instance.GameState != GameState.Playing)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (GameManager.Instance.GameState == GameState.GameEndScene)
+            {
+                if (!_speedIsZero)
+                {
+                    _animator.SetBool("cantRun", true);
+                    transform.Translate(_movingLine * (Time.deltaTime * (Speed / 2f)));
+                    StartTimerForSpeed();
+                }
+            }
+            else if (Input.GetMouseButtonDown(0))
             {
                 GameManager.Instance.ProgressGame();
             }
@@ -36,6 +50,42 @@ public class PlayerController : MonoBehaviour
         if(!GetInput()) Move();
         SetAnimatorRotationFloat();
         CheckIfStaminaZero();
+    }
+
+    private void StartTimerForSpeed()
+    {
+        if (GameManager.Instance.GameState == GameState.GameEndScene)
+        {
+            if (!IsInvoking(nameof(SetSpeedToZero)) && !slowlyGoDone)
+            {
+                Debug.Log("Started invoke");
+                Invoke(nameof(SetSpeedToZero), 3.5f);
+            }
+        }
+    }
+
+    private void SetSpeedToZero()
+    {
+        Speed = 0;
+        _speedIsZero = true;
+        if (!slowlyGoDone)
+        {
+            Invoke(nameof(SlowlyGo), 1f);
+        }
+        else
+        {
+            _animator.SetBool("Stop", true);
+            _animator.speed = 0;
+        }
+    }
+
+    private void SlowlyGo()
+    {
+        Speed = 1.5f;
+        _animator.speed = 0.6f;
+        slowlyGoDone = true;
+        _speedIsZero = false;
+        Invoke(nameof(SetSpeedToZero), 3f);
     }
 
 

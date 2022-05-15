@@ -5,7 +5,9 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
 
-    public static AudioManager Instance;
+    private static AudioManager _Instance;
+    public static AudioManager Instance => _Instance;
+    // public static AudioManager Instance;
 
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip[] SFX;
@@ -16,8 +18,7 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
-       
+        _Instance = this;
     }
 
     public void PlayAudio(string clipName,float volume = 1)

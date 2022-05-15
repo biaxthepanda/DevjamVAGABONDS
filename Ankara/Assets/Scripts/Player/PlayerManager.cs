@@ -32,7 +32,7 @@ public class PlayerManager : MonoBehaviour
 
     private void Update()
     {
-        if (_currentStamina > 0)
+        if (_currentStamina > 0 && GameManager.Instance.GameState == GameState.Playing)
         {
             _currentStamina -= _staminaDecreaseRate * Time.deltaTime;
             UIManager.Instance.UpdateStaminaBar(_currentStamina/MaxStamina);
@@ -71,5 +71,7 @@ public class PlayerManager : MonoBehaviour
     private void OnLevelLoaded(Level level)
     {
         _requiredFood = level.RequiredFood;
+        _foodAmount = 0;
+        AudioManager.Instance.ChangeMusic(Registry.LastLevelIndex-1);
     }
 }

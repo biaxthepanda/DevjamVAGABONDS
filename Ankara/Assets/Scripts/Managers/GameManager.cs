@@ -37,7 +37,10 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Registry.LastLevelIndex--;
-        GameState = GameState.MainMenu;
+        if (Registry.LastLevelIndex != 4)
+            GameState = GameState.MainMenu;
+        else
+            GameState = GameState.GameEndScene;
         StartLevel();
     }
     
@@ -81,6 +84,12 @@ public class GameManager : MonoBehaviour
         else if (GameState == GameState.Playing)
         {
             NextLevel();
+            if (Registry.LastLevelIndex == 5)
+            {
+                Debug.Log("last level here.");
+                GameState = GameState.GameEndScene;
+                return;
+            }
             GameState = GameState.MainMenu;
         }
         else if (GameState == GameState.GameOver)
@@ -106,5 +115,6 @@ public enum GameState
 {
     MainMenu,
     Playing,
-    GameOver
+    GameOver,
+    GameEndScene
 }
