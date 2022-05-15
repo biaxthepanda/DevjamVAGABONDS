@@ -206,12 +206,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 1501557066}
   _activeLevels:
-  - {fileID: 4514410499207980737, guid: 215166202c1bb0448abe1b62c8a74f45, type: 3}
   - {fileID: 4514410499207980737, guid: 9166b26f4e04e4d938ab838bf72038ba, type: 3}
   - {fileID: 4514410499207980737, guid: 1eb0249655e80f44eb9517ae88711224, type: 3}
   - {fileID: 4514410499207980737, guid: c62caacf5e9256e4092a0d7f5db76c05, type: 3}
   - {fileID: 4514410499207980737, guid: 9184740600752a8449e72538e0adb990, type: 3}
   - {fileID: 4514410499207980737, guid: 896e7947bb800ba47a7a27ab7d14d0cc, type: 3}
+  - {fileID: 4514410499207980737, guid: 215166202c1bb0448abe1b62c8a74f45, type: 3}
   GameStateChanged:
     m_PersistentCalls:
       m_Calls:
@@ -1079,7 +1079,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7774086, y: 1}
+    m_SensorSize: {x: 1.7766259, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1494,8 +1494,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 9.5, y: -5.2}
-  m_SizeDelta: {x: 48.415, y: 48.415}
+  m_AnchoredPosition: {x: 3.9, y: -3.3075}
+  m_SizeDelta: {x: 56.615, y: 56.615}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1218311068
 MonoBehaviour:
@@ -1517,7 +1517,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1622730041, guid: c95e80b73f0ef444d9ba6967f96491e6, type: 3}
+  m_Sprite: {fileID: -1776996247, guid: f55599664f2c34847968dc5ad12e02ac, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1937,7 +1937,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1771572585
 RectTransform:
   m_ObjectHideFlags: 0

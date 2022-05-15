@@ -104,6 +104,12 @@ public class PlayerController : MonoBehaviour
             _playerManager.CollectStamina(other.GetComponent<CollectibleStamina>().value);
             Destroy(other.gameObject);
         }
+        else if (other.CompareTag("HumanCollectible"))
+        {
+            ParticleManager.Instance.SpawnParticle(ParticleManager.Instance.heartParticle);
+            AudioManager.Instance.PlayAudio("meow2");
+            _playerManager.CollectStamina(other.GetComponent<CollectibleStamina>().value);
+        }
         else if (other.CompareTag("MaxStaminaCollectible"))
         {
             _playerManager.MaximizeStamina();

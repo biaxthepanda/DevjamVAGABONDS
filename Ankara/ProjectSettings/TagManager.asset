@@ -10,6 +10,7 @@ TagManager:
   - FoodCollectible
   - Missile
   - NextLevel
+  - HumanCollectible
   layers:
   - Default
   - TransparentFX
