@@ -1080,7 +1080,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7775195, y: 1}
+    m_SensorSize: {x: 1.7767768, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1286,6 +1286,7 @@ MonoBehaviour:
   deathParticle: {fileID: 147324, guid: c51e34914bd18ff4880b11005334182e, type: 3}
   heartParticle: {fileID: 120334, guid: cc0562e923d0cf9448bba7acdb82e626, type: 3}
   collectParticle: {fileID: 182714, guid: 0a9aa7cbab47dd34fad18af6ec82969d, type: 3}
+  milkParticle: {fileID: 4071686590720149172, guid: 46eeeb78252bd3443b83652a93d32685, type: 3}
   player: {fileID: 1501557064}
 --- !u!1 &1154229232
 GameObject:

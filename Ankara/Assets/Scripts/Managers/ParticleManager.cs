@@ -6,7 +6,7 @@ public class ParticleManager : MonoBehaviour
 {
     public static ParticleManager Instance;
 
-    public GameObject deathParticle, heartParticle, collectParticle;
+    public GameObject deathParticle, heartParticle, collectParticle,milkParticle;
 
     public Transform player;
 

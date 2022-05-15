@@ -31,7 +31,7 @@ public class DogAI : MonoBehaviour
     {
         if (_notFollowing && SendRay())
         {
-            DOVirtual.DelayedCall(0.25f, () => { _canFollow = true; animator.SetTrigger("Run"); AudioManager.Instance.PlayAudio("dog2"); });
+            DOVirtual.DelayedCall(0.25f, () => { _canFollow = true; animator.SetTrigger("Run"); AudioManager.Instance.PlayAudio("dog"); });
         }
 
         if (_canFollow)
