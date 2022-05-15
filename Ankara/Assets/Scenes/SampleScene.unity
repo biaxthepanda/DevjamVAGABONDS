@@ -209,9 +209,9 @@ MonoBehaviour:
   - {fileID: 4514410499207980737, guid: 215166202c1bb0448abe1b62c8a74f45, type: 3}
   - {fileID: 4514410499207980737, guid: 9166b26f4e04e4d938ab838bf72038ba, type: 3}
   - {fileID: 4514410499207980737, guid: 896e7947bb800ba47a7a27ab7d14d0cc, type: 3}
-  - {fileID: 4514410499207980737, guid: 9166b26f4e04e4d938ab838bf72038ba, type: 3}
+  - {fileID: 4514410499207980737, guid: c62caacf5e9256e4092a0d7f5db76c05, type: 3}
   - {fileID: 4514410499207980737, guid: 937c8a9d325151340800698926952420, type: 3}
-  - {fileID: 4514410499207980737, guid: f977679567e2e5944892ce31b43bd00d, type: 3}
+  - {fileID: 4514410499207980737, guid: 1eb0249655e80f44eb9517ae88711224, type: 3}
   GameStateChanged:
     m_PersistentCalls:
       m_Calls:
@@ -1002,7 +1002,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.1448553, y: 1}
+    m_SensorSize: {x: 2.140513, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
