@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class GameManager : MonoBehaviour
     
     private static GameManager _Instance;
     public static GameManager Instance => _Instance;
-
+    
     private Level _currentLevel;
 
     [SerializeField] private PlayerManager _player;
@@ -18,14 +19,20 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<Level> _activeLevels;
 
     public Action<Level> LevelLoaded;
-    public Action<GameState> GameStateChanged;
+    
+    public UnityEvent GameStateChanged;
 
     public GameState GameState;
 
+    
     private void Awake()
     {
         _Instance = this;
     }
+    
+    #endregion
+
+
 
     private void Start()
     {
@@ -33,8 +40,6 @@ public class GameManager : MonoBehaviour
         GameState = GameState.MainMenu;
         StartLevel();
     }
-
-    #endregion
     
     //METHODS HERE:
     public void Restart()
@@ -56,13 +61,13 @@ public class GameManager : MonoBehaviour
         Registry.LastLevelIndex++;
         _currentLevel = level;
         LevelLoaded.Invoke(_currentLevel);
+        _player.Restart();
     }
 
     public void GameOver()
     {
         GameState = GameState.GameOver;
-        // GameStateChanged.Invoke(GameState);
-        //Game over ekranı gelsin
+        GameStateChanged.Invoke();
         //Statlar falan çekilsin playerdan onlar yazsın kaç yemek topladın kaç lazımdı vsvs
     }
 
@@ -71,17 +76,18 @@ public class GameManager : MonoBehaviour
         if (GameState == GameState.MainMenu)
         {
             GameState = GameState.Playing;
-            // GameStateChanged.Invoke(GameState);
+            GameStateChanged.Invoke();
         }
         else if (GameState == GameState.Playing)
         {
             NextLevel();
+            GameState = GameState.MainMenu;
         }
         else if (GameState == GameState.GameOver)
         {
             Restart();
             GameState = GameState.Playing;
-            // GameStateChanged.Invoke(GameState);
+            GameStateChanged.Invoke();
         }
     }
 

@@ -121,6 +121,10 @@ public class PlayerController : MonoBehaviour
             ParticleManager.Instance.SpawnParticle(ParticleManager.Instance.deathParticle);
             GameManager.Instance.GameOver();
         }
+        else if (other.CompareTag("NextLevel"))
+        {
+            GameManager.Instance.ProgressGame();
+        }
     }
 
     private void SetAnimatorRotationFloat()

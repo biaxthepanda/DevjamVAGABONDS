@@ -9,6 +9,7 @@ TagManager:
   - DeathTile
   - FoodCollectible
   - Missile
+  - NextLevel
   layers:
   - Default
   - TransparentFX
