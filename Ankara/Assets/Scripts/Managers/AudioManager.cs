@@ -17,6 +17,7 @@ public class AudioManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+       
     }
 
     public void PlayAudio(string clipName)
@@ -58,5 +59,10 @@ public class AudioManager : MonoBehaviour
     {
         musicPlayer.clip = songs[i];
         musicPlayer.Play();
+    }
+
+    private void GameManagerOnLevelLoaded()
+    {
+        ChangeMusic(Registry.LastLevelIndex);
     }
 }
