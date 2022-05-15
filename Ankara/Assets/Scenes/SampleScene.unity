@@ -207,7 +207,7 @@ MonoBehaviour:
   _player: {fileID: 1501557066}
   _activeLevels:
   - {fileID: 4514410499207980737, guid: 215166202c1bb0448abe1b62c8a74f45, type: 3}
-  - {fileID: 4514410499207980737, guid: 896e7947bb800ba47a7a27ab7d14d0cc, type: 3}
+  - {fileID: 4514410499207980737, guid: 9166b26f4e04e4d938ab838bf72038ba, type: 3}
   GameStateChanged:
     m_PersistentCalls:
       m_Calls:
@@ -494,14 +494,14 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ff32d45da724baf4aa5fbc7d0fbae909, type: 3}
   - {fileID: 8300000, guid: 1768f4955262c1a49b7d58af27be3c54, type: 3}
   - {fileID: 8300000, guid: 815700eb8f1d9af44b7f29f380b41c62, type: 3}
-  - {fileID: 8300000, guid: 21b1a9d344c219a4eb855de210277fb0, type: 3}
+  - {fileID: 8300000, guid: f015cbd417ca9cc439732f9f8ebb183b, type: 3}
   musicPlayer: {fileID: 634636965}
   songs:
   - {fileID: 8300000, guid: 558b38705753be14d9003ef4efdeb63a, type: 3}
   - {fileID: 8300000, guid: 0dd3ad47a9a7a594da9db047866e34cd, type: 3}
   - {fileID: 8300000, guid: 83483516baee94d4b9eda8f8e834d919, type: 3}
-  - {fileID: 8300000, guid: b636d6c5635cd1444ba5f74a6b83ed77, type: 3}
   - {fileID: 8300000, guid: d6b3dd2414d79a0409299671196ff965, type: 3}
+  - {fileID: 8300000, guid: b636d6c5635cd1444ba5f74a6b83ed77, type: 3}
 --- !u!1 &172739516
 GameObject:
   m_ObjectHideFlags: 0
@@ -997,7 +997,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.562724, y: 1}
+    m_SensorSize: {x: 1.7768772, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1277,8 +1277,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -25, y: 0}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: -32.061, y: -7.0605}
+  m_SizeDelta: {x: 64.121, y: 64.121}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1157915907
 MonoBehaviour:
@@ -1302,8 +1302,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0/5
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e930b21bb45480946911055d972a83e5, type: 2}
+  m_sharedMaterial: {fileID: -7575828143939213295, guid: e930b21bb45480946911055d972a83e5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1327,7 +1327,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35.8
+  m_fontSize: 22.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1412,8 +1412,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 25, y: 0}
-  m_SizeDelta: {x: 35, y: 35}
+  m_AnchoredPosition: {x: 9.5, y: -5.2}
+  m_SizeDelta: {x: 48.415, y: 48.415}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1218311068
 MonoBehaviour:
@@ -1435,7 +1435,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 1622730041, guid: c95e80b73f0ef444d9ba6967f96491e6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1660,7 +1660,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 331.07, y: 140.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1686622521
 MonoBehaviour:
@@ -1688,8 +1688,8 @@ MonoBehaviour:
 
     DOKUN'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e930b21bb45480946911055d972a83e5, type: 2}
+  m_sharedMaterial: {fileID: -7575828143939213295, guid: e930b21bb45480946911055d972a83e5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

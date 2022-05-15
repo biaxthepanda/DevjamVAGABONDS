@@ -13,7 +13,7 @@ public class VehicleSystem : MonoBehaviour
 
     private void Start()
     {
-        CreateVehicle();
+        
     }
 
     void CreateVehicle()
@@ -58,5 +58,20 @@ public class VehicleSystem : MonoBehaviour
 
 
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player") ;
+        {
+            Debug.Log("PLAYER");
+            CreateVehicle();
+            Invoke("DestroySelf", 6f);
+        }
+    }
+
+    void DestroySelf()
+    {
+        Destroy(gameObject);
     }
 }

@@ -25,7 +25,7 @@ public class Vehicle : MonoBehaviour
 
     void DetermineDirection()
     {
-        direction = leftToRight ? new Vector2(0.66f, -0.33f).normalized : new Vector2(-0.66f,0.33f).normalized;
+        direction = leftToRight ? new Vector2(0.6f, -0.3f).normalized : new Vector2(-0.6f,0.3f).normalized;
     }
     void Move()
     {
